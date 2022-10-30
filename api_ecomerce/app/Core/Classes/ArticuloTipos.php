@@ -9,7 +9,7 @@ use App\Core\Validations\ValidateRequestArticuloTipo;
 use App\Models\ArticuloTipo;
 use Illuminate\Http\Request;
 
-class ArticuloTipos implements Icrud
+final class ArticuloTipos implements Icrud
 {
     private ValidateRequestArticuloTipo $requestArticuloTipo;
     private ArticuloTipo $tipo;

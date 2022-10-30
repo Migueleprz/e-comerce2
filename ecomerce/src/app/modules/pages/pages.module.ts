@@ -12,7 +12,8 @@ import {MainComponent} from "./main/main/main.component";
   imports: [
     CommonModule,
     PagesRoutingModule,
-    LayoutModule
+    LayoutModule,
+
 
   ],
   exports:[

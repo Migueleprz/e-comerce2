@@ -11,7 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AuthUser implements IAuth
+final class AuthUser implements IAuth
 {
     private ValidateRequestAuth $requestAuth;
     private ImageStorage $imageStorage;

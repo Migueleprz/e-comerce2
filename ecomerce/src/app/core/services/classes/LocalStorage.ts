@@ -1,5 +1,10 @@
 import {Rip} from "@core/services/classes/Rip";
 import {ILocalStorage} from "@core/interfaces/classes/ilocal-storage";
+import {Injectable} from "@angular/core";
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class LocalStorage implements ILocalStorage{
 

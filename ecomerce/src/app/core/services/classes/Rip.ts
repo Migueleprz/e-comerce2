@@ -1,6 +1,9 @@
 import * as crypt from "crypto-js";
-import {environment} from "../../../../environments/environment";
-
+import {environment} from "@environments/environment";
+import {Injectable} from "@angular/core";
+@Injectable({
+  providedIn: 'root'
+})
 export class Rip{
   private code: string = environment.key;
 

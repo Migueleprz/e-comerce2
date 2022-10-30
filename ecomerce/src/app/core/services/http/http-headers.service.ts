@@ -14,8 +14,9 @@ export class HttpHeadersService implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = this.lStorage.get("token");
-    if (Boolean(token)) {
+    const itemToken = localStorage.getItem("token");
+    if (itemToken) {
+      const token = this.lStorage.get("token")
       const req2 = req.clone({
         setHeaders: {
           ContentType: 'application/json',
@@ -27,7 +28,9 @@ export class HttpHeadersService implements HttpInterceptor {
     } else {
       const req2 = req.clone({
         setHeaders: {
+          ContentType: 'application/json',
           Accept: 'application/json',
+          Authorization: `Bearer ${itemToken}`
         }
       });
       return next.handle(req2);

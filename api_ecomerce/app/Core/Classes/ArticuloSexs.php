@@ -7,7 +7,7 @@ namespace App\Core\Classes;
 use App\Core\Interfaces\Classes\IArticuloSex;
 use App\Models\ArticuloSex;
 
-class ArticuloSexs implements IArticuloSex
+final class ArticuloSexs implements IArticuloSex
 {
     private ArticuloSex $articuloSex;
 

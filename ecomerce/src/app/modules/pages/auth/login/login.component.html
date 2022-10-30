@@ -5,22 +5,36 @@
          <h1 class="text-center">Iniciar sesión</h1>
        </div>
       <div class="card-body">
-        <form>
+        <form [formGroup]="formI">
           <div class="row">
             <div class="col-sm-12 col-md-12">
               <div class="input-group input-group-lg mb-3">
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Correo"
+                  aria-label="Email"
+                  aria-describedby="basic-addon1"
+                  formControlName="email"
+                >
                 <span class="input-group-text bg-dark" id="basic-addon1"><i class="bi bi-envelope-fill text-light"></i></span>
               </div>
             </div>
             <div class="col-sm-12 col-md-12">
               <div class="input-group input-group-lg mb-3">
-                <input type="password" class="form-control" placeholder="Contraseña" aria-label="password" aria-describedby="basic-addon1">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Contraseña"
+                  aria-label="password"
+                  aria-describedby="basic-addon1"
+                  formControlName="password"
+                >
                 <span class="input-group-text bg-dark" id="password"><i class="bi bi-key-fill text-light"></i></span>
               </div>
             </div>
             <div class="col-sm-12 col-md-12">
-              <button class="btn btn-primary w-100"> Iniciar Sesión</button>
+              <button class="btn btn-primary w-100" (click)="login()"> Iniciar Sesión</button>
             </div>
           </div>
         </form>

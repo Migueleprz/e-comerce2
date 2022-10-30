@@ -10,7 +10,7 @@ use App\Core\Validations\ValidateRequestArticulo;
 use App\Models\Articulo;
 use Illuminate\Http\Request;
 
-class Articulos implements Icrud
+final class Articulos implements Icrud
 {
     private ValidateRequestArticulo $requestArticulo;
     private Articulo $articulo;
