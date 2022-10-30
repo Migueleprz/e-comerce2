@@ -22,6 +22,6 @@ private readonly url = environment.apiUrl;
   }
 
   register(data: FormData): Observable<string> {
-    return  this.http.post<string>(`${this.url}register`, data);
+    return  this.http.post<string>(`${this.url}registry`, data);
   }
 }

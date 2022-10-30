@@ -1,1 +1,81 @@
-<p>signup works!</p>
+<div class="row justify-content-center mt-3 mb-5">
+  <div class="col-sm-12 col-md-4">
+    <div class="card mt-5">
+      <div class="card-header text-center">
+        <h1>Registrate</h1>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="formR">
+          <div class="row  mb-2">
+            <div class="col-sm-12 col-md-12 mb-2">
+              <label for="nuip" class="form-label">Número de Identificación</label>
+              <input
+                type="number"
+                id="nuip"
+                class="form-control"
+                formControlName="nuip"
+              >
+            </div>
+            <div class="col-sm-12 col-md-12 mb-2">
+              <label for="nombre" class="form-label">Nombres</label>
+              <input
+                type="text"
+                id="nombre"
+                class="form-control"
+                formControlName="nombres"
+              >
+            </div>
+            <div class="col-sm-12 col-md-12 mb-2">
+              <label for="apellidos" class="form-label">Apellidos</label>
+              <input
+                type="text"
+                id="apellidos"
+                class="form-control"
+                formControlName="apellidos"
+              >
+            </div>
+            <div class="col-sm-12 col-md-12 mb-2">
+              <label for="correo" class="form-label">Correo</label>
+              <input
+                type="text"
+                id="correo"
+                class="form-control"
+                formControlName="email"
+              >
+            </div>
+            <div class="col-sm-12 col-md-12 mb-2">
+              <label for="clave" class="form-label">Contraseña</label>
+              <input
+                type="password"
+                id="clave"
+                class="form-control"
+                formControlName="password"
+              >
+            </div>
+            <div class="col-sm-12 col-md-12 mb-2">
+              <label for="clave2" class="form-label">Confirmar contraseña</label>
+              <input
+                type="password"
+                id="clave2"
+                class="form-control"
+                formControlName="passwordc"
+              >
+            </div>
+            <div class="col-sm-12 col-md-12 mb-2">
+              <label for="image" class="form-label">Foto</label>
+              <input
+                type="file"
+                id="image"
+                class="form-control"
+                (change)="getImage($event)"
+              >
+            </div>
+            <div class="col-sm-12 col-md-12 mb-2">
+              <button class="btn btn-primary w-100" (click)="register()">Registrarme</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
