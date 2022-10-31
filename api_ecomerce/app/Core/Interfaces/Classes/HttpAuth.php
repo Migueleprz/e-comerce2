@@ -12,4 +12,6 @@ interface HttpAuth
      public function signup(Request $request):JsonResponse;
 
     public function login(Request $request):JsonResponse;
+
+    public function logout():JsonResponse;
 }

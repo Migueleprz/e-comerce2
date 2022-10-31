@@ -27,14 +27,19 @@ Route::middleware(['auth:api'])->get('/user', function (Request $request) {
 Route::post('registry', [AuthController::class, 'signup']);
 Route::post('login', [AuthController::class, 'login']);
 
-Route::middleware(['auth:api'])->group(function (){
+Route::get('marcas', [ArticuloMarcaController::class, 'index',]);
+Route::get('articulos', [ArticuloController::class, 'index']);
+Route::get('sex', [ArticuloSexController::class, 'index']);
+Route::get('tipos', [ArticuloTipoController::class, 'index']);
+Route::get('tipos', [ArticuloTipoController::class, 'index']);
 
-    Route::resource('marcas', ArticuloMarcaController::class)->only(['index', 'store', 'show', 'destroy']);
+Route::middleware(['auth:api'])->group(function () {
+
+    Route::resource('marcas', ArticuloMarcaController::class)->only(['store', 'show', 'destroy']);
     Route::post('marcas/{id}', [ArticuloMarcaController::class, 'edit']);
-    Route::get('sex',[ArticuloSexController::class, 'index']);
-    Route::resource('tallas', ArticuloTallasController::class)->only(['index', 'store', 'show','update', 'destroy']);
-    Route::resource('tipos', ArticuloTipoController::class)->only(['index', 'store', 'show','update', 'destroy']);
-    Route::resource('articulos', ArticuloController::class)->only(['index', 'store', 'show','update', 'destroy']);
-
+    Route::resource('tallas', ArticuloTallasController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+    Route::resource('tipos', ArticuloTipoController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
+    Route::resource('articulos', ArticuloController::class)->only(['store', 'show', 'update', 'destroy']);
+    Route::get('logout', [AuthController::class, 'logout']);
 });
 

@@ -29,4 +29,10 @@ class AuthController extends Controller implements HttpAuth
         $data = $this->authUser->login($request);
         return response()->json($data['data'], $data['status']);
     }
+
+    public function logout(): JsonResponse
+    {
+        $data = $this->authUser->logout();
+        return response()->json($data['data'], $data['status']);
+    }
 }
