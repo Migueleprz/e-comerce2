@@ -1,23 +1,30 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule} from "@angular/router";
-import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import {FooterComponent} from './footer/footer.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {HeaderComponent} from './header/header.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   exports: [
     RouterModule,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    HeaderComponent,
+    NgxPaginationModule
   ]
 })
-export class LayoutModule { }
+export class LayoutModule {
+}

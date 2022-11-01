@@ -7,7 +7,7 @@ use App\Core\Interfaces\Controller\IHttpISSUD;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ArticuloTallasController extends Controller implements IHttpISSUD
+final class ArticuloTallasController extends Controller implements IHttpISSUD
 {
     private ArticuloTalla $talla;
     public function __construct(ArticuloTalla $talla)

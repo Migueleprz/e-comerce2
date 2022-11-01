@@ -7,7 +7,7 @@ use App\Core\Interfaces\Controller\IHttpISSUD;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class ArticuloController extends Controller implements IHttpISSUD
+final class ArticuloController extends Controller implements IHttpISSUD
 {
     private Articulos $articulos;
 

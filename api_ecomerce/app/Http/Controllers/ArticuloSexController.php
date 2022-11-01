@@ -8,7 +8,7 @@ use App\Core\Classes\ArticuloSexs;
 use App\Core\Interfaces\Controller\IHttpArticuloSex;
 use Illuminate\Http\JsonResponse;
 
-class ArticuloSexController extends Controller implements IHttpArticuloSex
+final class ArticuloSexController extends Controller implements IHttpArticuloSex
 {
     private ArticuloSexs $sexs;
 

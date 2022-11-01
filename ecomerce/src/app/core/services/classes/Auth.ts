@@ -1,14 +1,14 @@
 import {HttpAuthService} from "@core/services/http/http-auth.service";
-import {Injectable, EventEmitter, Output} from "@angular/core";
+import {Injectable} from "@angular/core";
 import {Alert} from "@core/services/classes/utils/Alert";
 import {SuccessAuth} from "@core/services/classes/SuccessAuth";
 import {Router} from "@angular/router";
+import { IAuthEngine } from "@core/interfaces/classes/IAuthEngine";
 
 @Injectable({
   providedIn: 'root'
 })
-export class Auth {
-  @Output() DataLogged: EventEmitter<any> = new EventEmitter();
+export class Auth implements IAuthEngine {
   constructor(
     private httpAuth: HttpAuthService,
     private sAuth: SuccessAuth,
@@ -71,7 +71,7 @@ export class Auth {
   logout(): void {
     this.httpAuth.logout().subscribe({
       next: (n) => {
-        if(n){
+        if (n) {
           localStorage.clear();
           this.router.navigate(['/']);
         }
@@ -81,7 +81,6 @@ export class Auth {
       }
     })
   }
-
 
 
 }

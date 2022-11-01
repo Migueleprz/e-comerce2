@@ -18,8 +18,8 @@ private readonly url = environment.apiUrl;
     return  this.http.post<MAuth>(`${this.url}login`, data);
   }
 
-  logout(): Observable<string> {
-    return  this.http.get<string>(`${this.url}logout`);
+  logout(): Observable<boolean> {
+    return  this.http.get<boolean>(`${this.url}logout`);
   }
 
   register(data: FormData): Observable<string> {

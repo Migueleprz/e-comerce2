@@ -35,7 +35,7 @@ final class Articulos implements Icrud
                 return ['data' => '0 Datos', 'status' => 404];
             }
 
-            $data = $this->articulo->all();
+            $data = $this->articulo->with(['marcas','tipos','tallas','sex'])->paginate();
             return ['data' => $data, 'status' => 200];
         } catch (\Exception $e) {
             return ['data' => $e->getMessage(), 'status' => 500];
@@ -99,7 +99,7 @@ final class Articulos implements Icrud
                 $imageName = $respImg['image'];
                 $imagePath = env('APP_URL') . $disk . '/' . $imageName;
             }
-            $data->nombre = $request->nombre;
+            $data->nombre = ucwords($request->nombre);
             $data->precio = $request->precio;
             $data->preciop = $request->preciop;
             $data->stock = $request->stock;
@@ -109,7 +109,7 @@ final class Articulos implements Icrud
             $data->tipo_id = $request->tipo_id;
             $data->talla_id = $request->talla_id;
             $data->sex_id = $request->sex_id;
-            $data->descripcion = $request->descripcion;
+            $data->descripcion = ucwords($request->descripcion);
             $data->save();
             return ['data' => 'Articulo: ' . $data->nombre . ' actualizado!', 'status' => 200];
 

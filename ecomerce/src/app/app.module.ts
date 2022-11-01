@@ -7,6 +7,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HttpHeadersService} from "@core/services/http/http-headers.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {ToastrModule} from "ngx-toastr";
     AppRoutingModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    NgxPaginationModule
   ],
   providers: [
     {

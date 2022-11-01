@@ -8,10 +8,10 @@ import {LocalStorage} from '@core/services/classes/LocalStorage';
   styleUrls: ['./navbar.component.css'],
 
 })
-export class NavbarComponent implements   DoCheck {
+export class NavbarComponent implements  DoCheck {
   isLogged!: boolean;
   usuario!: string;
-  foto: string = "/";
+  foto: string = "";
   type!: boolean;
 
   constructor(

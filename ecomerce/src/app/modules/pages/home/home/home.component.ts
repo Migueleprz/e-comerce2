@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ArticulosEngine} from "@core/services/classes/data/ArticulosEngine";
+import {MArticulosPaginate} from "@core/interfaces/models/mArticulosPaginate";
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  dts:any;
+  page!:number;
+  size:number = 6;
 
-  constructor() { }
+  constructor(
+    private article: ArticulosEngine
+  ) {
+  }
 
   ngOnInit(): void {
+     this.article.readArticles().subscribe({
+       next:(n:MArticulosPaginate)=>{
+         this.dts = n.data
+       }
+     });
   }
 
 }

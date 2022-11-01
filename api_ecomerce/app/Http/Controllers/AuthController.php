@@ -9,7 +9,7 @@ use App\Core\Interfaces\Classes\HttpAuth;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class AuthController extends Controller implements HttpAuth
+final class AuthController extends Controller implements HttpAuth
 {
     private AuthUser $authUser;
 

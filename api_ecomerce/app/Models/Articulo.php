@@ -23,7 +23,7 @@ class Articulo extends Model
         'descripcion',
     ];
 
-    public function macas():BelongsTo
+    public function marcas():BelongsTo
     {
         return $this->belongsTo(ArticuloMarca::class,'marca_id');
     }
@@ -40,6 +40,6 @@ class Articulo extends Model
 
     public function sex():BelongsTo
     {
-        return $this->belongsTo(ArticuloTallas::class,'sex_id');
+        return $this->belongsTo(ArticuloSex::class,'sex_id');
     }
 }
