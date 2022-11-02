@@ -36,6 +36,7 @@
                 <button
                   class="btn {{isNew ? 'btn-success': 'btn-warning'}} w-75"
                   (click)="isNew ? save() : update()"
+                  [disabled]="formM.invalid"
                 >{{isNew ? 'Registrar': 'Actualizar'}}
                 </button>
               </div>
@@ -60,12 +61,12 @@
               <td><img src="{{item.image_path}}" alt="{{item.nombre}}" class="img-fluid rounded-circle img-thumbnail" width="50" height="50"></td>
               <td>{{item.nombre}}</td>
               <td>
-                <div
+                <button
                   class="btn btn-primary"
                   (click)="get(item.id)"
                 >
                   <i class="fas fa-edit"></i>
-                </div>
+                </button>
               </td>
             </tr>
           </tbody>

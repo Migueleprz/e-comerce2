@@ -43,7 +43,6 @@ export class MarcasComponent implements OnInit {
     if (this.img) {
       formD.append('image', this.img, this.img.name);
     }
-
     return formD;
   }
 

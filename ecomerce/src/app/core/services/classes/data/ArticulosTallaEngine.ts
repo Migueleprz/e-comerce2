@@ -1,36 +1,36 @@
 import {Injectable} from "@angular/core";
-import {HttpMarcasService} from "@core/services/http/http-marcas.service";
-import {Observable, Subscription} from "rxjs";
+import {HttpTallasService} from "@core/services/http/http-tallas.service";
 import {Alert} from "@core/services/classes/utils/Alert";
+import {Observable, Subscription} from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn:'root'
 })
+export class ArticulosTallaEngine{
 
-export class ArticulosMarcaEngine {
   constructor(
-    private httpMarcas: HttpMarcasService,
+    private httpTallas: HttpTallasService,
     private alert:Alert
   ) {
   }
 
   index(): Observable<any> {
-    return this.httpMarcas.read();
+    return this.httpTallas.read();
   }
 
   storage(data: FormData): Subscription {
-    return this.httpMarcas.create(data).subscribe({
+    return this.httpTallas.create(data).subscribe({
       next:(n)=>{
         this.alert.success(n, 'Exito!')
       },
       error:(e)=>{
         console.log(e.error)
-    }
+      }
     });
   }
 
   update(data:FormData, id: number): Subscription {
-    return this.httpMarcas.update(data, id).subscribe({
+    return this.httpTallas.update(data, id).subscribe({
       next:(n)=>{
         this.alert.success(n, 'Exito!')
       },
@@ -41,12 +41,10 @@ export class ArticulosMarcaEngine {
   }
 
   show(id:number): Observable<any> {
-    return this.httpMarcas.get(id);
+    return this.httpTallas.get(id);
   }
 
-  delete(): Observable<any> {
-    return this.httpMarcas.read();
+  delete(id:number): Observable<any> {
+    return this.httpTallas.delete(id);
   }
-
-
 }

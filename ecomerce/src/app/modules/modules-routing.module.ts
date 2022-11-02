@@ -13,7 +13,7 @@ export const routeHome: Routes = [
   {
     path:'',
     component: HomeComponent,
-    data: {title: 'Panel Principal', icon: 'bi bi-grid-1x2'}
+    data: {title: 'E-Shop', icon: 'bi bi-grid-1x2'}
   }
 ];
 
@@ -48,7 +48,7 @@ export const routeHerramientas: Routes = [
   {
     path:'tallas',
     component: TallasComponent,
-    data: {title: 'Tipod de Tallas', icon: 'fa-solid fa-maximize'},
+    data: {title: 'Tipos de Tallas', icon: 'fa-solid fa-maximize'},
 
   },
   {

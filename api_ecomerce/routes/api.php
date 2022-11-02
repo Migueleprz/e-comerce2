@@ -30,7 +30,7 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('marcas', [ArticuloMarcaController::class, 'index',]);
 Route::get('articulos', [ArticuloController::class, 'index']);
 Route::get('sex', [ArticuloSexController::class, 'index']);
-Route::get('tipos', [ArticuloTipoController::class, 'index']);
+Route::get('tallas', [ArticuloTallasController::class, 'index']);
 Route::get('tipos', [ArticuloTipoController::class, 'index']);
 
 Route::middleware(['auth:api'])->group(function () {
