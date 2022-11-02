@@ -14,7 +14,11 @@ const routes: Routes = [
       {
         path:'',
         loadChildren:()=> import('./home/home.module').then((m)=>m.HomeModule)
-      }
+      },
+      {
+        path:'herramientas',
+        loadChildren:()=> import('./herramientas/herramientas.module').then((m)=>m.HerramientasModule)
+      },
     ]
   }
 ];

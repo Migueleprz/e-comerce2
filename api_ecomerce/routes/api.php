@@ -34,7 +34,6 @@ Route::get('tipos', [ArticuloTipoController::class, 'index']);
 Route::get('tipos', [ArticuloTipoController::class, 'index']);
 
 Route::middleware(['auth:api'])->group(function () {
-
     Route::resource('marcas', ArticuloMarcaController::class)->only(['store', 'show', 'destroy']);
     Route::post('marcas/{id}', [ArticuloMarcaController::class, 'edit']);
     Route::resource('tallas', ArticuloTallasController::class)->only(['index', 'store', 'show', 'update', 'destroy']);

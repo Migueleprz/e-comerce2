@@ -132,8 +132,7 @@ final class ArticuloMarcas implements Icrud
             if (empty($artMarca)) {
                 return ['data' => 'Datos no econtrados', 'status' => 404];
             }
-            $artMarca->delete();
-            return ['data' => $artMarca, 'status' => 200];
+             return ['data' => $artMarca, 'status' => 200];
         }catch (\Exception $e){
             return ['data' => $e->getMessage(), 'status' => 500];
         }

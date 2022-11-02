@@ -8,17 +8,14 @@
       <div class="col-sm-12 col-md-3 mb-5" *ngFor="let item of dts | paginate:{itemsPerPage: 6, currentPage: page}">
         <app-card-articulo articleName="{{item.nombre}}" imge="{{item.image_path}}" articlePrice="{{item.precio}}"></app-card-articulo>
       </div>
-      <pagination-controls
-        id="paginate"
-        (pageChange)="page = $event "
-        (pageBoundsCorrection)="page = $event"
-        [maxSize]="size"
-        [directionLinks]="true"
-        [autoHide]="true"
-        [responsive]="true"
-        previousLabel="Anterior"
-        nextLabel="Siguiente"
-      ></pagination-controls>
+      <div class="col-sm-12 text-center">
+        <pagination-controls
+          (pageChange)="page = $event "
+          previousLabel="Anterior"
+          nextLabel="Proximo"
+        ></pagination-controls>
+      </div>
+
     </div>
   </div>
 </section>

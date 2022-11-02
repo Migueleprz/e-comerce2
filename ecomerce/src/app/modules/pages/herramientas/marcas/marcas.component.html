@@ -1,0 +1,83 @@
+<div class="container-fluid mt-3">
+  <app-breadcrumb></app-breadcrumb>
+</div>
+
+<div class="container-fluid mt-3">
+  <div class="row justify-content-between">
+    <div class="col-sm-12 col-md-4">
+        <app-card title="{{isNew ? 'Registrar': 'Actualización de'}} Marca">
+          <form [formGroup]="formM">
+            <div class="row">
+              <div class="col-12 mb-2 text-center">
+                <img [src]="imgPreview ? imgPreview : defauilImg" width="150" height="150" class="rounded-circle mb-3">
+              </div>
+              <div class="col-12 mb-2">
+                <label for="foto">Logo de la marca</label>
+                <input
+                  type="file"
+                  name="image"
+                  id="foto"
+                  class="form-control"
+                  (change)="getImage($event)"
+                >
+              </div>
+              <div class="col-12 mb-3">
+                <label for="nombre">Nombre de la marca</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  id="nombre"
+                  class="form-control"
+                  formControlName="nombre"
+                >
+              </div>
+
+              <div class="col-12 text-center">
+                <button
+                  class="btn {{isNew ? 'btn-success': 'btn-warning'}} w-75"
+                  (click)="isNew ? save() : update()"
+                >{{isNew ? 'Registrar': 'Actualizar'}}
+                </button>
+              </div>
+            </div>
+          </form>
+        </app-card>
+    </div>
+    <div class="col-sm-12 col-md-8">
+      <app-card title="Marcas">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Logo</th>
+              <th width="50%">Marca</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of marcas | paginate:{itemsPerPage: 10, currentPage: page}; index as i;">
+              <td>{{i+1}}</td>
+              <td><img src="{{item.image_path}}" alt="{{item.nombre}}" class="img-fluid rounded-circle img-thumbnail" width="50" height="50"></td>
+              <td>{{item.nombre}}</td>
+              <td>
+                <div
+                  class="btn btn-primary"
+                  (click)="get(item.id)"
+                >
+                  <i class="fas fa-edit"></i>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+        <pagination-controls
+          (pageChange)="page = $event "
+          previousLabel="Anterior"
+          nextLabel="Proximo"
+        ></pagination-controls>
+      </app-card>
+    </div>
+  </div>
+
+</div>

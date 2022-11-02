@@ -38,7 +38,7 @@
             {{usuario}}
           </a>
           <ul class="dropdown-menu text-small shadow">
-            <li *ngIf="type"><a class="dropdown-item" href="#"><i class="bi bi-gear-fill"></i> Herramientas</a></li>
+            <li *ngIf="type"><a class="dropdown-item" routerLink="herramientas"><i class="bi bi-gear-fill"></i> Herramientas</a></li>
             <li><a class="dropdown-item" href="#"><i class="bi bi-person-circle"></i> Perfil</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#" (click)="salir()"><i class="bi bi-box-arrow-right"></i> Salir</a></li>

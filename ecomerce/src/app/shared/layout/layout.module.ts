@@ -5,25 +5,33 @@ import {FooterComponent} from './footer/footer.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {HeaderComponent} from './header/header.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {BreadcrumbComponent} from './breadcrumb/breadcrumb.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     FooterComponent,
     NavbarComponent,
-    HeaderComponent
+    HeaderComponent,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     RouterModule,
     FooterComponent,
     NavbarComponent,
     HeaderComponent,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BreadcrumbComponent,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class LayoutModule {
