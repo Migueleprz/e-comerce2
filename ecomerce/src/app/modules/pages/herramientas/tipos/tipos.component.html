@@ -5,21 +5,63 @@
 <div class="container-fluid mt-3">
   <div class="row justify-content-between">
     <div class="col-sm-12 col-md-4">
-      <app-card title="Formulario de registro">
-        <div class="row">
-          <div class="col-12 mb-2">
-            <label for="nombre">Nombre de la marca</label>
-            <input type="text" name="nombre" id="nombre" class="form-control">
+      <app-card title="{{isNew ? 'Registrar': 'Actualización de'}} Tipos">
+        <form [formGroup]="formTp">
+          <div class="row">
+            <div class="col-12 mb-3">
+              <label for="nombre">Nombre de la marca</label>
+              <input
+                type="text"
+                name="nombre"
+                id="nombre"
+                class="form-control"
+                formControlName="nombre"
+              >
+            </div>
+
+            <div class="col-12 text-center">
+              <button
+                class="btn {{isNew ? 'btn-success': 'btn-warning'}} w-75"
+                (click)="isNew ? save() : update()"
+                [disabled]="formTp.invalid"
+              >{{isNew ? 'Registrar': 'Actualizar'}}
+              </button>
+            </div>
           </div>
-          <div class="col-12">
-            <label for="foto">Logo de la marca</label>
-            <input type="file" name="image" id="foto" class="form-control">
-          </div>
-        </div>
+        </form>
       </app-card>
     </div>
     <div class="col-sm-12 col-md-8">
-      <app-card title="Marcas">
+      <app-card title="Tipos">
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th width="50%">Talla</th>
+            <th>Acciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of tipos | paginate:{itemsPerPage: 10, currentPage: page}; index as i;">
+            <td>{{i+1}}</td>
+            <td>{{item.nombre}}</td>
+            <td>
+              <button
+                class="btn btn-primary"
+                (click)="get(item.id)"
+              >
+                <i class="fas fa-edit"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+
+        </table>
+        <pagination-controls
+          (pageChange)="page = $event "
+          previousLabel="Anterior"
+          nextLabel="Proximo"
+        ></pagination-controls>
       </app-card>
     </div>
   </div>
