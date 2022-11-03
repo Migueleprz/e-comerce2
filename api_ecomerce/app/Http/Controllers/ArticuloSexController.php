@@ -20,6 +20,6 @@ final class ArticuloSexController extends Controller implements IHttpArticuloSex
     public function index(): JsonResponse
     {
         $data = $this->sexs->read();
-        return  response()->json([$data['data'], $data['status']]);
+        return  response()->json($data['data'], $data['status']);
     }
 }

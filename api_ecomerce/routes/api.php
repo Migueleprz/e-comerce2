@@ -39,6 +39,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::resource('tallas', ArticuloTallasController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
     Route::resource('tipos', ArticuloTipoController::class)->only(['index', 'store', 'show', 'update', 'destroy']);
     Route::resource('articulos', ArticuloController::class)->only(['store', 'show', 'update', 'destroy']);
+    Route::post('articulos/{id}', [ArticuloController::class, 'edit']);
     Route::get('logout', [AuthController::class, 'logout']);
 });
 

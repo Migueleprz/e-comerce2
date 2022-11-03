@@ -1,3 +1,232 @@
 <div class="container-fluid mt-3">
   <app-breadcrumb></app-breadcrumb>
+
+  <div class="row justify-content-end mb-3">
+    <!-- Button trigger modal -->
+    <div class="col-sm-12 col-md-3">
+      <button
+        type="button"
+        class="btn btn-primary float-end"
+        data-bs-toggle="modal"
+        data-bs-target="#articulos"
+      >
+        agregar atirulo
+      </button>
+    </div>
+    <app-modal idModal="articulos" title="agregar articulo" size="modal-xl">
+      <form [formGroup]="formA">
+        <div class="row mb-2">
+          <div class="col-sm-12 col-md-4 text-center">
+            <img
+              [src]="imgPreview ? imgPreview : defauilImg"
+              width="250"
+              height="450"
+              class="img-thumbnail mb-3"
+            >
+
+            <input
+              type="file"
+              name="image"
+              id="foto"
+              class="form-control"
+              (change)="getImage($event)"
+              accept="image/*"
+            >
+            <label for="foto" class="btn btn-outline-dark w-100">
+              {{imgName ? imgName : 'Seleccione la magen del Articulo'}}
+
+            </label>
+          </div>
+          <div class="col-sm-12 col-md-8">
+            <div class="row">
+              <div class="col-sm-12 col-md-12 mb-2">
+                <label for="nombre">Nombre del Articulo</label>
+                <input
+                  type="text"
+                  name="nombre"
+                  id="nombre"
+                  class="form-control"
+                  formControlName="nombre"
+                >
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2">
+                <label for="precio">Precio del Articulo</label>
+                <input
+                  type="number"
+                  name="precio"
+                  id="precio"
+                  class="form-control"
+                  formControlName="precio"
+                >
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2">
+                <label for="preciop">Precio del Articulo promoción</label>
+                <input
+                  type="number"
+                  name="preciop"
+                  id="preciop"
+                  class="form-control"
+                  formControlName="preciop"
+                >
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2">
+                <label for="stock">Stock</label>
+                <input
+                  type="number"
+                  name="stock"
+                  id="stock"
+                  class="form-control"
+                  formControlName="stock"
+                >
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2">
+                <label for="marca">Marca</label>
+                <select
+                  name="marca"
+                  id="marca"
+                  class="form-control"
+                  formControlName="marca_id"
+                >
+                  <option value="">Seleccione...</option>
+                  <option *ngFor="let item of marcas" value="{{item.id}}">{{item.nombre}}</option>
+                </select>
+
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2">
+                <label for="marca">Tipo</label>
+                <select
+                  name="tipo"
+                  id="tipo"
+                  class="form-control"
+                  formControlName="tipo_id"
+                >
+                  <option value="">Seleccione...</option>
+                  <option *ngFor="let item of tipos" value="{{item.id}}">{{item.nombre}}</option>
+                </select>
+
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2">
+                <label for="talla">Talla</label>
+                <select
+                  name="talla"
+                  id="talla"
+                  class="form-control"
+                  formControlName="talla_id"
+                >
+                  <option value="">Seleccione...</option>
+                  <option *ngFor="let item of tallas" value="{{item.id}}">{{item.nombre}}</option>
+                </select>
+
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2">
+                <label for="sex">Sexo</label>
+                <select
+                  name=sex
+                  id="sex"
+                  class="form-control"
+                  formControlName="sex_id"
+                >
+                  <option value="">Seleccione...</option>
+                  <option *ngFor="let item of sexs" value="{{item.id}}">{{item.nombre}}</option>
+
+                </select>
+
+              </div>
+              <div class="col-sm-12 col-md-6 mb-2">
+                <label for="descripcion">Descripción</label>
+                <textarea
+                  class="form-control"
+                  id="descripcion"
+                  rows="5"
+                  formControlName="descripcion"
+                ></textarea>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-end">
+          <div class="col-sm-12 col-md-2 ">
+            <button
+              class="btn {{isNew ? 'btn-success': 'btn-warning'}} w-100 float-end"
+              (click)="isNew ? save() : update()"
+              [disabled]="formA.invalid"
+              data-bs-dismiss="modal"
+            >{{isNew ? 'Registrar': 'Actualizar'}}
+            </button>
+          </div>
+          <div class="col-sm-12 col-md-2">
+            <button
+              class="btn btn-secondary float-end w-100"
+              data-bs-dismiss="modal"
+              (click)="resetForm()"
+            >Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </app-modal>
+  </div>
+
+  <div class="row">
+    <table class="table" id="no-more-tables">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Imagen</th>
+          <th>Artculo</th>
+          <th>Stock</th>
+          <th>Precio</th>
+          <th>Precio Prom.</th>
+          <th>Tipo</th>
+          <th>Sexo</th>
+          <th>Marcas</th>
+          <th>Tallas</th>
+          <th>Descripcion</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of articulos| paginate:{itemsPerPage: 10, currentPage: page}; index as i;">
+          <td data-title="#">{{i+1}}</td>
+          <td data-title="Imagen"><img src="{{item.image_path}}" alt="{{item.image}}" class="img-thumbnail rounded-circle" width="60"></td>
+          <td data-title="Articulo">{{item.nombre}}</td>
+          <td data-title="Stock">{{item.stock}}</td>
+          <td data-title="Precio">{{item.precio |currency:'COP':'$':'3.0'}}</td>
+          <td data-title="Precio Promoción">{{item.preciop |currency:'COP':'$':'3.0'}}</td>
+          <td data-title="Tipo">{{item.tipos.nombre}}</td>
+          <td data-title="Sexo">{{item.sex.nombre}}</td>
+          <td data-title="Marca">{{item.marcas.nombre}}</td>
+          <td data-title="Talla">{{item.tallas.nombre}}</td>
+          <td data-title="Descripción">{{item.descripcion}}</td>
+           <td data-title="Acciones">
+            <button
+            class="btn btn-primary mx-1"
+            data-bs-toggle="modal"
+            data-bs-target="#articulos"
+            (click)="get(item.id)"
+            >
+              <i class="fa fa-edit"></i>
+            </button>
+            <button
+            class="btn btn-danger mx-1"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <pagination-controls
+        (pageChange)="page = $event "
+        previousLabel="Anterior"
+        nextLabel="Proximo"
+      ></pagination-controls>
+    </div>
+  </div>
+
+
 </div>
+
+

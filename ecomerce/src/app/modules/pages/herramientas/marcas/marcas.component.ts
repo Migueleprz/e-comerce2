@@ -60,7 +60,7 @@ export class MarcasComponent implements OnInit {
       error: (e) => {
         console.log(e)
       }
-    })
+    });
   }
 
   update(): void {

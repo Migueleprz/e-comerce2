@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Core\Classes\Articulos;
-use App\Core\Interfaces\Controller\IHttpISSUD;
+use App\Core\Interfaces\Controller\IHttpISEDS;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-final class ArticuloController extends Controller implements IHttpISSUD
+final class ArticuloController extends Controller implements IHttpISEDS
 {
     private Articulos $articulos;
 
@@ -35,7 +35,7 @@ final class ArticuloController extends Controller implements IHttpISSUD
         return response()->json($data['data'], $data['status']);
     }
 
-    public function update(Request $request, int $id): JsonResponse
+    public function edit(Request $request, int $id): JsonResponse
     {
         $data = $this->articulos->update($request, $id);
         return response()->json($data['data'], $data['status']);

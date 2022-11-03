@@ -20,7 +20,7 @@ class ValidateRequestArticulo implements ValidateRequests
     public function request(Request $rq): array
     {
         $rules = [
-            'nombre' => 'required|unique:articulos',
+            'nombre' => 'required|unique:articulos,nombre,'.$rq->id,
             'precio' => 'required|integer',
             'preciop' => 'required|integer',
             'stock' => 'required|integer',
