@@ -1,4 +1,5 @@
 import {Observable, Subscription} from "rxjs";
+import {MArticulos} from "@core/interfaces/models/mArticulos";
 
 export interface IHttpArticulos {
 
@@ -8,7 +9,7 @@ export interface IHttpArticulos {
 
   update(data: FormData, id: number): Observable<Object>;
 
-  get(id: number): Observable<Object>;
+  get(id: number): Observable<MArticulos[]>;
 
   delete(id: number): Observable<Object>;
 

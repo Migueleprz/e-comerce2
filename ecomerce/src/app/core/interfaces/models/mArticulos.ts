@@ -13,7 +13,8 @@ export interface MArticulos {
   descripcion: string,
   marcas: {
     id: number,
-    nombre: string
+    nombre: string,
+    image_path: string,
   },
   tipos: {
     id: number,

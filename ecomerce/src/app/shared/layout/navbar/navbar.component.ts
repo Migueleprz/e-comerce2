@@ -1,6 +1,7 @@
 import {Component, DoCheck} from '@angular/core';
 import {Auth} from '@core/services/classes/Auth';
 import {LocalStorage} from '@core/services/classes/LocalStorage';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,7 @@ export class NavbarComponent implements  DoCheck {
   constructor(
     private lStorage: LocalStorage,
     private auth: Auth,
+    private router:Router
   ) {
   }
 
@@ -32,6 +34,10 @@ export class NavbarComponent implements  DoCheck {
 
   salir(): void {
     this.auth.logout();
+  }
+
+  cartArticulo(): void{
+    this.router.navigate(['/carrito/cartArticulo']);
   }
 
 }

@@ -3,6 +3,7 @@ import {IArticulos} from "@core/interfaces/classes/IArticulos";
 import {HttpArticulosService} from "@core/services/http/http-articulos.service";
 import {MArticulosPaginate} from "@core/interfaces/models/mArticulosPaginate";
 import {Observable, Subscription} from "rxjs";
+import {MArticulos} from "@core/interfaces/models/mArticulos";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class ArticulosEngine implements IArticulos{
     });
   }
 
-  showArticles(id: number): Observable<Object> {
+  showArticles(id: number): Observable<MArticulos[]> {
    return  this.httpArticle.get(id);
   }
 

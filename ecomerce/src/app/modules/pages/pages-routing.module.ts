@@ -19,6 +19,10 @@ const routes: Routes = [
         path:'herramientas',
         loadChildren:()=> import('./herramientas/herramientas.module').then((m)=>m.HerramientasModule)
       },
+      {
+        path:'carrito',
+        loadChildren:()=> import('./cart/cart.module').then((m)=>m.CartModule)
+      },
     ]
   }
 ];

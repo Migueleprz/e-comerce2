@@ -1,20 +1,26 @@
 import {Routes} from "@angular/router";
-import {HomeComponent} from "./pages/home/home/home.component";
-import {LoginComponent} from "./pages/auth/login/login.component";
-import {SignupComponent} from "./pages/auth/signup/signup.component";
-import {GLoginGuard} from "@core/guards/g-login.guard"
-import {HerramientasComponent} from "./pages/herramientas/herramientas/herramientas.component";
-import {MarcasComponent} from "./pages/herramientas/marcas/marcas.component";
-import {TallasComponent} from "./pages/herramientas/tallas/tallas.component";
-import {TiposComponent} from "./pages/herramientas/tipos/tipos.component";
-import {ArticulosComponent} from "./pages/herramientas/articulos/articulos.component";
+import {HomeComponent} from "@pages/home/home/home.component";
+import {LoginComponent} from "@pages/auth/login/login.component";
+import {SignupComponent} from "@pages/auth/signup/signup.component";
+import {HerramientasComponent} from "@pages/herramientas/herramientas/herramientas.component";
+import {MarcasComponent} from "@pages/herramientas/marcas/marcas.component";
+import {TallasComponent} from "@pages/herramientas/tallas/tallas.component";
+import {TiposComponent} from "@pages/herramientas/tipos/tipos.component";
+import {ArticulosComponent} from "@pages/herramientas/articulos/articulos.component";
 import {GTypeGuard} from "@core/guards/g-type.guard";
+import {CartShopComponent} from "@pages/cart/cart-shop/cart-shop.component";
+import {ArticuloComponent} from "@pages/home/articulo/articulo.component";
 
 export const routeHome: Routes = [
   {
     path: '',
     component: HomeComponent,
     data: {title: 'E-Shop', icon: 'bi bi-grid-1x2'}
+  },
+  {
+    path:'articulo/:nombre/:id',
+    component: ArticuloComponent,
+    data: {title: 'Articulo', icon: 'bi bi-grid-1x2'}
   }
 ];
 
@@ -30,6 +36,20 @@ export const routeAuth: Routes = [
     data: {title: 'Registrate', icon: 'bi bi-grid-1x2'},
 
   }
+];
+
+export const routeCart: Routes = [
+  {
+    path: 'cartArticulo',
+    component: CartShopComponent,
+    data: {title: 'Carrito de compras', icon: 'bi bi-grid-1x2'},
+  },
+  /*{
+    path: 'signup',
+    component: SignupComponent,
+    data: {title: 'Registrate', icon: 'bi bi-grid-1x2'},
+
+  }*/
 ];
 
 export const routeHerramientas: Routes = [

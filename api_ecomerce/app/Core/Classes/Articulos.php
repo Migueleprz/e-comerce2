@@ -135,7 +135,7 @@ final class Articulos implements Icrud
     public function get(int $id): array
     {
         try {
-            $data = $this->articulo->find($id);
+            $data = $this->articulo->where(['id'=>$id])->with(['marcas', 'tipos', 'tallas','sex'])->get();
             if (empty($data)) {
                 return ['data' => 'Datos no econtrado', 'status' => 404];
             }
