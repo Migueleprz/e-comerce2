@@ -11,8 +11,8 @@
               <div class="col-12 mb-2 text-center">
                 <img [src]="imgPreview ? imgPreview : defauilImg" width="150" height="150" class="rounded-circle mb-3">
               </div>
-              <div class="col-12 mb-2">
-                <label for="foto">Logo de la marca</label>
+              <div class="col-12 mb-2 text-center">
+                <label for="foto" class="btn btn-outline-dark w-100">{{imgName ? imgName : 'Seleccione el logo de la marca'}}</label>
                 <input
                   type="file"
                   name="image"

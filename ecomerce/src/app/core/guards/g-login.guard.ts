@@ -16,11 +16,13 @@ export class GLoginGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const isLogged = Boolean(localStorage.getItem("isLogged"));
+    console.log(isLogged)
     if(isLogged){
-      this.router.navigate(['']);
+      return true;
+    }else{
       return false;
     }
-    return true;
+
   }
 
 }

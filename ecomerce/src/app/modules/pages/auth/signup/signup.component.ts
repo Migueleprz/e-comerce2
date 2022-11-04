@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Auth} from "@core/services/classes/Auth";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-signup',
@@ -10,11 +11,17 @@ import {Auth} from "@core/services/classes/Auth";
 export class SignupComponent implements OnInit {
   formR!: FormGroup;
   image!: File;
+  islooged = Boolean(localStorage.getItem('isLogged'));
 
   constructor(
     private auth: Auth,
-    private formB: FormBuilder
-  ) { }
+    private formB: FormBuilder,
+    private router:Router
+  ) {
+    if(this.islooged){
+      router.navigate(['/']);
+    }
+  }
 
   configForm():void {
     this.formR = this.formB.group({

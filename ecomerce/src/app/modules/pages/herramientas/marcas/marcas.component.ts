@@ -14,6 +14,7 @@ export class MarcasComponent implements OnInit {
   isNew = true;
   img!: File;
   imgPreview!: string;
+  imgName: string = "";
   defauilImg = './assets/images/default.png';
   marca_id: number = 0;
   page!:number;
@@ -81,6 +82,7 @@ export class MarcasComponent implements OnInit {
     this.img = event.target.files[0];
     this.previewImage(this.img).then((img: any) => {
       this.imgPreview = img.base;
+      this.imgName = this.img.name;
     });
     return this.img;
   }
