@@ -3,6 +3,9 @@
 @import "~@mdi/font/css/materialdesignicons.css";
 @import "~@fortawesome/fontawesome-free/css/all.css";
 @import "~@fortawesome/fontawesome-free/css/fontawesome.css";
+body{
+  font-family: "Comic Sans MS", serif;
+}
 
 a{
   text-decoration: none;

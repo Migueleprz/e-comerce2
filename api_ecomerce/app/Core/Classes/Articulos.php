@@ -8,6 +8,7 @@ use App\Core\Interfaces\Classes\Icrud;
 use App\Core\Shared\ImageStorage;
 use App\Core\Validations\ValidateRequestArticulo;
 use App\Models\Articulo;
+use Exception;
 use Illuminate\Http\Request;
 
 final class Articulos implements Icrud
@@ -37,7 +38,7 @@ final class Articulos implements Icrud
 
             $data = $this->articulo->with(['marcas','tipos','tallas','sex'])->paginate();
             return ['data' => $data, 'status' => 200];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return ['data' => $e->getMessage(), 'status' => 500];
         }
     }
@@ -73,7 +74,7 @@ final class Articulos implements Icrud
             ]);
             return ['data' => 'Articulo: ' . $this->articulo->nombre . ' registrado!', 'status' => 200];
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return ['data' => $e->getMessage(), 'status' => 500];
         }
     }
@@ -113,7 +114,7 @@ final class Articulos implements Icrud
             $data->save();
             return ['data' => 'Articulo: ' . $data->nombre . ' actualizado!', 'status' => 200];
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return ['data' => $e->getMessage(), 'status' => 500];
         }
     }
@@ -127,7 +128,7 @@ final class Articulos implements Icrud
             }
             $data->delete();
             return ['data' => 'Articulo: ' . $data->nombre . ' eliminado!', 'status' => 200];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return ['data' => $e->getMessage(), 'status' => 500];
         }
     }
@@ -140,7 +141,7 @@ final class Articulos implements Icrud
                 return ['data' => 'Datos no econtrado', 'status' => 404];
             }
             return ['data' => $data, 'status' => 200];
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return ['data' => $e->getMessage(), 'status' => 500];
         }
     }

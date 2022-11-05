@@ -14,6 +14,7 @@ export class ArticuloComponent implements OnInit {
   articulo = Articulo;
   cant = 1;
   disp = 0;
+  cart = [{id:0,articulo:'', articulo_img:'', precio:0, cantidad:0}]
 
   constructor(
     private route: ActivatedRoute,
@@ -56,6 +57,10 @@ export class ArticuloComponent implements OnInit {
     if(this.cant >= 2){
       this.cant--;
     }
+  }
+
+  add(){
+    this.cart.push();
   }
 
 

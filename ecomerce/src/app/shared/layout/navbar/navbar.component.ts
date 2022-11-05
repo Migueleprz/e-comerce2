@@ -2,6 +2,7 @@ import {Component, DoCheck} from '@angular/core';
 import {Auth} from '@core/services/classes/Auth';
 import {LocalStorage} from '@core/services/classes/LocalStorage';
 import {Router} from "@angular/router";
+import {Cart} from "@core/services/classes/utils/Cart";
 
 @Component({
   selector: 'app-navbar',
@@ -14,11 +15,13 @@ export class NavbarComponent implements  DoCheck {
   usuario!: string;
   foto: string = "";
   type!: boolean;
+  public numItem!: number;
 
   constructor(
     private lStorage: LocalStorage,
     private auth: Auth,
-    private router:Router
+    private router:Router,
+    private cart: Cart
   ) {
   }
 
@@ -29,6 +32,11 @@ export class NavbarComponent implements  DoCheck {
       this.foto = this.lStorage.get("image");
       this.type = Boolean(this.lStorage.get("type"));
     }
+    this.cart.getArticle().subscribe({
+      next:(n)=>{
+        this.numItem = n.length;
+      }
+    })
   }
 
 

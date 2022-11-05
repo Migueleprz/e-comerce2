@@ -6,7 +6,13 @@
   <div class="container px-4 px-lg-5 mt-5">
     <div class="row gx-4  justify-content-center">
       <div class="col-sm-12 col-md-3 mb-5" *ngFor="let item of dts | paginate:{itemsPerPage: 6, currentPage: page}">
-        <app-card-articulo articleName="{{item.nombre}}" imge="{{item.image_path}}" articlePrice="{{item.precio}}" articleId="{{item.id}}"></app-card-articulo>
+        <app-card-articulo
+          articleName="{{item.nombre}}"
+          imge="{{item.image_path}}"
+          articlePrice="{{item.precio}}"
+          articleId="{{item.id}}"
+          [articulo]="item"
+        ></app-card-articulo>
       </div>
       <div class="col-sm-12 text-center">
         <pagination-controls

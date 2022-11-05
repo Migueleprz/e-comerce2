@@ -4,6 +4,7 @@ import {RouterModule} from "@angular/router";
 import {routeCart} from "../../modules-routing.module";
 import {LayoutModule} from "@shared/layout/layout.module";
 import { CartShopComponent } from './cart-shop/cart-shop.component';
+import {ComponentsModule} from "@shared/components/components.module";
 
 
 
@@ -11,10 +12,11 @@ import { CartShopComponent } from './cart-shop/cart-shop.component';
   declarations: [
     CartShopComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routeCart),
-    LayoutModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routeCart),
+        LayoutModule,
+        ComponentsModule
+    ]
 })
 export class CartModule { }

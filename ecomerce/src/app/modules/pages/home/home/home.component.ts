@@ -21,6 +21,9 @@ export class HomeComponent implements OnInit {
      this.article.readArticles().subscribe({
        next:(n:MArticulosPaginate)=>{
          this.dts = n.data
+         this.dts.forEach((a:any)=>{
+           Object.assign(a,{cant:1, total:a.precio});
+         })
        }
      });
   }
